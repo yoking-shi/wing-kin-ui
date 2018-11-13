@@ -1,0 +1,14 @@
+{
+  "name": "wing-kin-china-cities",
+  "version": "1.0.0",
+  "description": "wing-kin UI框架处理移动端",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wing-kin 施永坚",
+  "license": "MIT",
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}
