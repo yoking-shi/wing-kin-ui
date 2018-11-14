@@ -1,31 +1,50 @@
 <template>
-  <button :class="classes"
-          :disabled="disabled">
-    <span>xxxx</span>
-    <span>xxxxx</span>
+  <button :class="classes">
+    <span><slot name="icon"></slot></span>
+    <span><slot></slot></span>
   </button>
 </template>
 
 <script>
+// 颜色类型
+const colorTypes = ['primary', 'success', 'info', 'danger', 'warning', 'blank']
+
 export default {
   name: 'wk-button',
-  props: {
-    type: {
-      validator (value) {
-        return ['primary', 'success', 'info', 'danger', 'warning', 'blank'].indexOf(value) > -1;
-      },
-      default: 'primary'
-    },
-    disabled: {
-      defaut: false
+
+  data() {
+    return {
     }
   },
 
   computed: {
     classes () {
       let classes = ['wk-btn']
-      classes.push(`wk-btn-${this.type}`)
+
+      if (this.$attrs.hasOwnProperty('round')) {
+        classes.push(`wk-btn-round`)
+        delete this.$attrs.round
+      }
+
+      if (this.$attrs.hasOwnProperty('block')) {
+        classes.push(`wk-btn-round`)
+        delete this.$attrs.round
+      }
+
+      colorTypes.forEach(color => {
+        if (this.$attrs.hasOwnProperty(color)) {
+          classes.push(`wk-btn-${color}`)
+          delete this.$attrs[color]
+        }
+      })
+
       return classes
+    }
+  },
+
+  mounted() {
+    if (this.$attrs.hasOwnProperty('disabled')) {
+      this.$el.setAttribute('disabled', '')
     }
   }
 }
@@ -35,10 +54,45 @@ export default {
 @import '../../../styles/common.scss';
 
 .wk-btn {
-  background: $color-primary;
   border: 0;
-  color: #fff;
-  padding: 5px 10px;
-  outline-color: aquamarine;
+  padding: 0.5rem 1rem;
+  min-width: 5rem;
+  min-height: 2rem;
+  
+  &-primary {
+    background: $color-primary;
+    color: $write;
+  }
+
+  &-success {
+    background: $color-success;
+    color: $write;
+  }
+
+  &-info {
+    background: $color-info;
+    color: $write;
+  }
+
+  &-danger {
+    background: $color-danger;
+    color: $write;
+  }
+
+  &-warning {
+    background: $color-warning;
+    color: $write;
+  }
+
+  &-blank {
+    background: $color-blank;
+    color: $black;
+  }
+
+  span {
+    font-size: 1rem;
+    display: inline-block;
+    line-height: 1rem;
+  }
 }
 </style>
