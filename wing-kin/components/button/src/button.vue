@@ -1,6 +1,6 @@
 <template>
   <button :class="classes">
-    <span><slot name="icon"></slot></span>
+    <slot name="icon"></slot>
     <span><slot></slot></span>
   </button>
 </template>
@@ -58,30 +58,26 @@ export default {
   padding: 0.5rem 1rem;
   min-width: 5rem;
   min-height: 2rem;
+  color: $write;
   
   &-primary {
     background: $color-primary;
-    color: $write;
   }
 
   &-success {
     background: $color-success;
-    color: $write;
   }
 
   &-info {
     background: $color-info;
-    color: $write;
   }
 
   &-danger {
     background: $color-danger;
-    color: $write;
   }
 
   &-warning {
     background: $color-warning;
-    color: $write;
   }
 
   &-blank {
@@ -89,10 +85,14 @@ export default {
     color: $black;
   }
 
+  &-round {
+    border-radius: 1vw;
+  }
+
   span {
     font-size: 1rem;
     display: inline-block;
-    line-height: 1rem;
+    line-height: 1.5rem;
   }
 }
 </style>

@@ -13,13 +13,14 @@ const router = new Router({
     {
       path: 'quick',
       name: 'quick_path',
-      component: () => import( /* webpackChunkName: "quick" */ './views/quick')
+      component: () => import(/* webpackChunkName: "quick" */ './views/quick')
     },
     {
       path: '/',
       name: 'button_path',
-      component: () => import( /* webpackChunkName: "button" */ './views/components/button')
-    },
+      component: () =>
+        import(/* webpackChunkName: "button" */ './views/components/button')
+    }
   ]
 })
 

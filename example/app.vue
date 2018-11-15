@@ -6,6 +6,6 @@
 
 <style lang="scss">
 body {
-  background: #F2EFE6;
+  background: #f2efe6;
 }
 </style>
